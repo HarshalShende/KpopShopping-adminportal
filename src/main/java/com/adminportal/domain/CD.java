@@ -17,17 +17,17 @@ public class CD {
 	
 	private Long id;
 	private String title;
-	private String author; //musician
+	private String musician; //musician
 	private String publisher;//company
 	private String publicationDate;//release date
 	private String language;
 	private String category; 
 	private int numberOfSongs; //number of songs
 	private String format;
-	private int isbn; //reference
+	private int reference; //reference
 	private double shippingWeight;
 	private double listPrice;
-	private double ourPirce;
+
 	private boolean active=true;
 	private int inStockNumber;
 	
@@ -53,12 +53,12 @@ public class CD {
 		this.title = title;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getMusician() {
+		return musician;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setMusician(String musician) {
+		this.musician = musician;
 	}
 
 	public String getPublisher() {
@@ -109,12 +109,13 @@ public class CD {
 		this.format = format;
 	}
 
-	public int getIsbn() {
-		return isbn;
+
+	public int getReference() {
+		return reference;
 	}
 
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
+	public void setReference(int reference) {
+		this.reference = reference;
 	}
 
 	public double getShippingWeight() {
@@ -133,13 +134,7 @@ public class CD {
 		this.listPrice = listPrice;
 	}
 
-	public double getOurPirce() {
-		return ourPirce;
-	}
 
-	public void setOurPirce(double ourPirce) {
-		this.ourPirce = ourPirce;
-	}
 
 	public boolean isActive() {
 		return active;
