@@ -5,35 +5,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Book {
+public class CD {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private Long id;
 	private String title;
-	private String author;
-	private String publisher;
-	private String publicationDate;
+	private String author; //musician
+	private String publisher;//company
+	private String publicationDate;//release date
 	private String language;
-	private String category;
-	private int numberOfPages;
+	private String category; 
+	private int numberOfSongs; //number of songs
 	private String format;
-	private int isbn;
+	private int isbn; //reference
 	private double shippingWeight;
 	private double listPrice;
 	private double ourPirce;
 	private boolean active=true;
+	private int inStockNumber;
 	
 	@Column(columnDefinition="text") //support long strings
 	private String description;
-	private int inStockNumber;
 	
-	private MultipartFile bookImage;
+	@Transient //won't store in database
+	private MultipartFile cdImage;
 
 	public Long getId() {
 		return id;
@@ -91,12 +93,12 @@ public class Book {
 		this.category = category;
 	}
 
-	public int getNumberOfPages() {
-		return numberOfPages;
+	public int getNumberOfSongs() {
+		return numberOfSongs;
 	}
 
-	public void setNumberOfPages(int numberOfPages) {
-		this.numberOfPages = numberOfPages;
+	public void setNumberOfSongs(int numberOfSongs) {
+		this.numberOfSongs = numberOfSongs;
 	}
 
 	public String getFormat() {
@@ -147,14 +149,6 @@ public class Book {
 		this.active = active;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getInStockNumber() {
 		return inStockNumber;
 	}
@@ -163,13 +157,22 @@ public class Book {
 		this.inStockNumber = inStockNumber;
 	}
 
-	public MultipartFile getBookImage() {
-		return bookImage;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setBookImage(MultipartFile bookImage) {
-		this.bookImage = bookImage;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
+	public MultipartFile getCdImage() {
+		return cdImage;
+	}
+
+	public void setCdImage(MultipartFile cdImage) {
+		this.cdImage = cdImage;
+	}
+
 	
 	
 	
