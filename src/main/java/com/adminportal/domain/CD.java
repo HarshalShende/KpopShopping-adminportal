@@ -18,8 +18,8 @@ public class CD {
 	private Long id;
 	private String title;
 	private String musician; //musician
-	private String publisher;//company
-	private String publicationDate;//release date
+	private String company;//company
+	private String releaseDate;//release date
 	private String language;
 	private String category; 
 	private int numberOfSongs; //number of songs
@@ -61,20 +61,24 @@ public class CD {
 		this.musician = musician;
 	}
 
-	public String getPublisher() {
-		return publisher;
+
+
+	public String getCompany() {
+		return company;
 	}
 
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
-	public String getPublicationDate() {
-		return publicationDate;
+
+
+	public String getReleaseDate() {
+		return releaseDate;
 	}
 
-	public void setPublicationDate(String publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 	public String getLanguage() {

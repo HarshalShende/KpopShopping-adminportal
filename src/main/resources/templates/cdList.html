@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	
+	<div class="container">
+		<div class="table-responsive">
+			<table id="cdListTable" class="table table-borderd table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Musician</th>
+						<th>Category</th>
+						<th>Price</th>
+						<th>Active?</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="cd:${cdList}">
+						<td th:text="${cd.title}"></td>
+						<td th:text="${cd.musician}"></td>
+						<td th:text="${cd.category}"></td>
+						<td th:text="${cd.listPrice}"></td>
+						<td th:text="${cd.active}"></td>
+						<td>delete</td>
+					</tr>
+				
+				</tbody>
+			
+			
+			</table>
+		</div>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

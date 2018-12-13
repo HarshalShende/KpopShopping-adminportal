@@ -11,42 +11,57 @@
 			<form class="form-horizontal" th:action="@{/cd/add}" method="post"
 				enctype="multipart/form-data" action="">
 				<fieldset>
-					<legend class="center-block">New CD Information</legend>
-					<span style="font-size: small"> * is a required field</span>
+					<legend class="center-block">
+						New CD Information <span style="font-size: small"> * is a
+							required field</span>
+					</legend>
+
 
 					<!-- title -->
 					<div class="form-group">
-						<label for="title">* Title</label> <input type="text"
-							class="form-control" id="title" th:value="${cd.title}"
-							required="required" placeholder="Title" />
+						<label class="col-md-2 control-label" for="title">* Title</label>
+
+						<div class="col-md-8">
+							<input name="title" type="text" class="form-control" id="title"
+								th:value="${cd.title}" required="required" placeholder="Title" />
+						</div>
 					</div>
 
 					<!-- author -->
 					<div class="form-group">
-						<label for="author">* Musician</label> <input type="text"
-							class="form-control" id="musician" th:value="${cd.musician}"
-							required="required" placeholder="Musician" />
+						<label class="col-md-2 control-label" for="musician">*
+							Musician</label>
+						<div class="col-md-8">
+							<input name="musician" type="text" class="form-control" id="musician"
+								th:value="${cd.musician}" required="required"
+								placeholder="Musician" />
+						</div>
 					</div>
 
 					<!-- publisher -->
 					<div class="form-group">
-						<label for="publisher">Company</label> <input type="text"
-							class="form-control" id="publisher" th:value="${cd.publisher}"
-							placeholder="Company" />
+						<label class="col-md-2 control-label" for="company">Company</label>
+						<div class="col-md-8">
+							<input name="company" type="text" class="form-control" id="company"
+								th:value="${cd.company}" placeholder="Company" />
+						</div>
 					</div>
 
 					<!-- publication date -->
 					<div class="form-group">
-						<label for="publicationDate">Release Date</label> <input
-							type="date" class="form-control" id="publicationDate"
-							th:value="${cd.publicationDate}" placeholder="ublication Date" />
+						<label class="col-md-2 control-label" for="releaseDate">Release
+							Date</label>
+						<div class="col-md-8">
+							<input name="releaseDate" type="date" class="form-control" id="releaseDate"
+								th:value="${cd.releaseDate}" />
+						</div>
 					</div>
 
 					<!-- language -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="language">Language</label>
-						<div class="col-xs-8">
-							<select th:value="${cd.language}" id="language"
+						<label class="col-md-2 control-label" for="language">Language</label>
+						<div class="col-md-8">
+							<select name="language" th:value="${cd.language}" id="language"
 								class="form-control">
 								<option value="korean">Korean</option>
 								<option value="japanese">Japanese</option>
@@ -58,10 +73,10 @@
 
 					<!-- category -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="category">*
+						<label class="col-md-2 control-label" for="category">*
 							Category</label>
-						<div class="col-xs-8">
-							<select th:value="${cd.category}" id="category"
+						<div class="col-md-8">
+							<select name="category" th:value="${cd.category}" id="category"
 								class="form-control">
 								<option value="" selected="selected" disabled="disabled">Please
 									select an option...</option>
@@ -77,18 +92,23 @@
 						</div>
 					</div>
 
- 
+
 					<!-- number of songs -->
 					<div class="form-group">
-						<label for="numberOfSongs">Number of Songs</label> <input type="number"
-							name="numberOfSongs" class="form-control" id="numberOfSongs"
-							th:value="${cd.numberOfSongs}" placeholder="Number of Songs" />
+						<label class="col-md-2 control-label" for="numberOfSongs">Number
+							of Songs</label>
+
+						<div class="col-md-8">
+							<input type="number" name="numberOfSongs" class="form-control"
+								id="numberOfSongs" th:value="${cd.numberOfSongs}"
+								placeholder="Number of Songs" />
+						</div>
 					</div>
 
 					<!-- format -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="format">Format</label>
-						<div class="col-xs-8">
+						<label class="col-md-2 control-label" for="format">Format</label>
+						<div class="col-md-8">
 							<select th:value="${cd.format}" id="format" name="format"
 								class="form-control">
 								<option value="disk">Disk</option>
@@ -99,17 +119,22 @@
 
 					<!-- reference -->
 					<div class="form-group">
-						<label for="reference">Reference </label> <input type="text" name="reference"
-							class="form-control" id="reference" th:value="${cd.reference}"
-							placeholder="Reference" /> 
+						<label class="col-md-2 control-label" for="reference">Reference
+						</label>
+
+						<div class="col-md-8">
+							<input type="text" name="reference" class="form-control"
+								id="reference" th:value="${cd.reference}"
+								placeholder="Reference" />
+						</div>
 					</div>
 
-					
-				<!-- shipping weight -->
+
+					<!-- shipping weight -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="shippingWeight">Shipping
+						<label class="col-md-2 control-label" for="shippingWeight">Shipping
 							Weight</label>
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<div class="input-group">
 								<input th:value="${cd.shippingWeight}" type="number"
 									name="shippingWeight" class="form-control" id="shippingWeight"
@@ -121,9 +146,9 @@
 
 					<!-- list price -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="listPrice">
+						<label class="col-md-2 control-label" for="listPrice">
 							Price</label>
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
 									th:value="${cd.listPrice}" type="number" name="listPrice"
@@ -132,54 +157,65 @@
 						</div>
 					</div>
 
-					
+
 					<!-- in stock number -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="inStockNumber">Number
+						<label class="col-md-2 control-label" for="inStockNumber">Number
 							in stock</label>
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<input th:value="${cd.inStockNumber}" type="number"
 								name="inStockNumber" class="form-control" id="inStockNumber"
-								placeholder="Number of in-stock copies" /> 
+								placeholder="Number of in-stock copies" />
 						</div>
 					</div>
+					
 					<!-- status of cd -->
 					<div class="form-group">
-						<label class="col-xs-2 control-label" for="status">Status</label>
-						<div class="col-xs-8">
-							<label><input value="true" type="radio" name="active"
-								class="form-control" /> Active </label>
-							 <label><input
-								value="false" type="radio" name="active" class="form-control" />
-								Inactive </label> 
+						<label class="col-md-2 control-label" for="status">Status</label>
+						<div class="col-md-8">
+							<label>
+								<input value="true" type="radio" name="active" /> 
+									Active 
+							</label> 
+								
+							<label>
+								<input value="false" type="radio" name="active" />
+								Inactive 
+							</label>
 						</div>
 					</div>
 
 					<!-- description -->
 					<div class="form-group">
-						<label for="description">Description</label>
-						<textarea name="description" rows="5" class="form-control"
-							id="description" th:value="${cd.description}"
-							placeholder="Description" cols="" >
-						</textarea>
+						<label class="col-md-2 control-label" for="description">Description</label>
+
+						<div class="col-md-8">
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${cd.description}"
+								placeholder="Description">
+							</textarea>
+						</div>
 					</div>
 
 					<!-- upload image -->
 					<div class="form-group">
-						<div class="col-xs-2">
-							<label for="cdImage">Upload CD image</label>
-						</div>
-						<div class="col-xs-8">
+				
+						<label class="col-md-2" for="cdImage">Upload CD image</label>
+					
+						<div class="col-md-8">
 							<input id="cdImage" type="file" name="cdImage"
 								th:value="${cd.cdImage}" />
 						</div>
 					</div>
 
 					<div class="form-group">
-					<button type="submit" class="btn btn-success">Add CD</button>
-					<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<button type="submit" class="btn btn-success">Add CD</button>
+						<a class="btn btn-danger" th:href="@{/}">Cancel</a>
 					</div>
-					
+					</div>
+
 				</fieldset>
 			</form>
 		</div>
