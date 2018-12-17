@@ -24,5 +24,10 @@ public class CDServiceImp implements CDService{
 	public List<CD> findAll(){
 		return (List<CD>)cdRepository.findAll();
 	}
+	
+	@Override
+	public CD findOne(Long id) {
+		return cdRepository.findById(id).orElse(null);
+	}
 
 }

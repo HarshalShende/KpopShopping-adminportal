@@ -20,12 +20,13 @@ import com.adminportal.utility.SecurityUtility;
 @SpringBootApplication
 public class AdminportalApplication implements CommandLineRunner{
 
+	@Autowired 
+	private UserService userService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AdminportalApplication.class, args);
 	}
-	
-	@Autowired 
-	private UserService userService;
+
 	@Override
 	public void run(String... args) throws Exception{
 		User user1 = new User();

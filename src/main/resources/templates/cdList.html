@@ -5,7 +5,7 @@
 
 
 <body>
-	<div th:replace="common/header :: navbar" />
+	<div th:replace="common/header :: navbar"></div>
 	
 	<div class="container">
 		<div class="table-responsive">
@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					<tr data-th-each="cd:${cdList}">
-						<td th:text="${cd.title}"></td>
+						<td><a th:href="@{/cd/cdInfo(id=${cd.id})}"><span th:text="${cd.title}"></span></a></td>
 						<td th:text="${cd.musician}"></td>
 						<td th:text="${cd.category}"></td>
 						<td th:text="${cd.listPrice}"></td>
@@ -37,6 +37,6 @@
 		</div>
 	</div>
 
-	<div th:replace="common/header :: body-bottom-scripts" />
+	<div th:replace="common/header :: body-bottom-scripts"></div>
 </body>
 </html>

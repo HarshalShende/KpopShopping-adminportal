@@ -32,9 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/css/**",
 			"/js/**",
 			"/image/**",
-			"/",
 			"/newUser",
 			"/forgetPassword",
+			"/",
 			"/login",
 			"/fonts/**"
 	};

@@ -8,11 +8,11 @@
 
 	<div class="container">
 		<div class="row">
-			<form class="form-horizontal" th:action="@{/cd/add}" method="post"
+			<form class="form-horizontal" th:action="@{/cd/updateCD}" method="post"
 				enctype="multipart/form-data" action="">
 				<fieldset>
 					<legend class="center-block">
-						New CD Information <span style="font-size: small"> * is a
+						Update CD Information <span style="font-size: small"> * is a
 							required field</span>
 					</legend>
 
@@ -191,7 +191,7 @@
 
 						<div class="col-md-8">
 							<textarea name="description" rows="5" class="form-control"
-								id="description" th:value="${cd.description}"
+								id="description" th:value="${cd.description}" th:text="${cd.description}"
 								placeholder="Description">
 							</textarea>
 						</div>
@@ -211,8 +211,8 @@
 					<div class="form-group">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
-						<button type="submit" class="btn btn-success">Add CD</button>
-						<a class="btn btn-danger" th:href="@{/cd/cdList}">Cancel</a>
+						<button type="submit" class="btn btn-success">Update CD</button>
+						<a class="btn btn-danger" th:href="@{/cd/cdInfo(id=${cd.id})}">Cancel</a>
 					</div>
 					</div>
 

@@ -8,4 +8,6 @@ public interface CDService {
 	CD save(CD cd);
 	
 	List<CD> findAll();
+	
+	CD findOne(Long id);
 }

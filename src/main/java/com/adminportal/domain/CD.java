@@ -24,9 +24,9 @@ public class CD {
 	private String category; 
 	private int numberOfSongs; //number of songs
 	private String format;
-	private int reference; //reference
-	private double shippingWeight;
-	private double listPrice;
+	private String reference; //reference
+	private float shippingWeight;
+	private float listPrice;
 
 	private boolean active=true;
 	private int inStockNumber;
@@ -114,27 +114,27 @@ public class CD {
 	}
 
 
-	public int getReference() {
+	public String getReference() {
 		return reference;
 	}
 
-	public void setReference(int reference) {
+	public void setReference(String reference) {
 		this.reference = reference;
 	}
 
-	public double getShippingWeight() {
+	public float getShippingWeight() {
 		return shippingWeight;
 	}
 
-	public void setShippingWeight(double shippingWeight) {
+	public void setShippingWeight(float shippingWeight) {
 		this.shippingWeight = shippingWeight;
 	}
 
-	public double getListPrice() {
+	public float getListPrice() {
 		return listPrice;
 	}
 
-	public void setListPrice(double listPrice) {
+	public void setListPrice(float listPrice) {
 		this.listPrice = listPrice;
 	}
 

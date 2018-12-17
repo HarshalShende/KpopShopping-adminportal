@@ -1,6 +1,5 @@
 package com.adminportal.controller;
 
-import java.awt.print.Book;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.adminportal.domain.CD;
@@ -62,6 +62,21 @@ public class CDController {
 		List<CD> cdList = cdService.findAll();
 		model.addAttribute("cdList", cdList);
 		return "cdList";
+	}
+	
+	@RequestMapping("/cdInfo")
+	public String cdInfo(@RequestParam("id") Long id, Model model) {
+		CD cd = cdService.findOne(id);
+		model.addAttribute("cd", cd);
+		
+		return "cdInfo";
+	}
+	
+	@RequestMapping("/updateCD")
+	public String updateCD(@RequestParam("id") Long id, Model model) {
+		CD cd = cdService.findOne(id);
+		model.addAttribute("cd", cd);
+		return "updateCD";
 	}
 	
 }

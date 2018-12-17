@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar"></div>
+	
+	<div class="container">
+		<div>
+			<ol class="breadcrumb">
+				<li><a th:href="@{/cd/cdList}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Go back</a></li>
+				<li><a th:href="@{/cd/updateCD?id=}+${cd.id}">Edit</a></li>
+			</ol>
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="panel panel-default">
+				<div class="panel-body">
+					<img th:src="@{/image/cd/}+${cd.id}+'.png'" class="img-responsive" />
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<h3 th:text="${cd.title}"></h3>
+				<div class="row">
+					<div class="col-xs-6">
+						<p><strong>Musician: </strong><span th:text="${cd.musician}"></span></p>
+						<p><strong>Company: </strong><span th:text="${cd.company}"></span></p>
+						<p><strong>Release Date: </strong><span th:text="${cd.releaseDate}"></span></p>
+						<p><strong>Language: </strong><span th:text="${cd.language}"></span></p>
+						<p><strong>Category: </strong><span th:text="${cd.category}"></span></p>
+						<p><strong>Songs: </strong><span th:text="${cd.numberOfSongs}"></span></p>
+					</div>
+					<div class="col-xs-6">
+						<p><strong>Format: </strong><span th:text="${cd.format}"></span></p>
+						<p><strong>Reference: </strong><span th:text="${cd.reference}"></span></p>
+						<p><strong>Shipping Weight: </strong><span th:text="${cd.shippingWeight}"></span></p>
+						<p><strong>Price: </strong><span th:text="${cd.listPrice}"></span></p>
+						<p><strong>Number in Stock: </strong><span th:text="${cd.inStockNumber}"></span></p>
+					</div>
+				</div>
+				
+				<p><Strong>Description: </Strong><span th:text="${cd.description}"></span></p>
+			</div>
+			
+		</div>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>
