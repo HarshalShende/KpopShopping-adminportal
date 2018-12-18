@@ -37,6 +37,16 @@
 		</div>
 	</div>
 
-	<div th:replace="common/header :: body-bottom-scripts"></div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+	<script>
+		$(document).ready(function() {
+			$("#cdListTable").DataTable({
+				"ordering": false,
+				stateSave: true
+			});
+		});
+	</script>
+	
 </body>
 </html>

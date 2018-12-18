@@ -19,7 +19,7 @@
 			<div class="col-xs-3">
 				<div class="panel panel-default">
 				<div class="panel-body">
-					<img th:src="@{/image/cd/}+${cd.id}+'.png'" class="img-responsive" />
+					<img th:src="@{/image/cd/}+${cd.id}+'.png'" class="img-responsive center-block" />
 				</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 					</div>
 				</div>
 				
-				<p><Strong>Description: </Strong><span th:text="${cd.description}"></span></p>
+				<p><Strong>Description: </Strong><span th:utext="${cd.description}"></span></p>
 			</div>
 			
 		</div>

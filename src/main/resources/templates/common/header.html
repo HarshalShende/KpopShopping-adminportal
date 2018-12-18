@@ -12,6 +12,14 @@
 <!-- Custom styles for this template -->
 <link th:href="@{/css/style.css}" rel="stylesheet" />
 
+<!-- data table -->
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+
+
 <link rel="icon" href="/image/K-icon.jpg" />
 </head>
 
@@ -45,6 +53,10 @@
 	<div th:fragment="body-bottom-scripts">
 		<script th:src="@{/js/jquery.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
+		
+			<!-- data table -->
+		 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+  		 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
 	</div>
 </body>
 </html>
