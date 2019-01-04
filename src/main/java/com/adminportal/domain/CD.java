@@ -1,13 +1,18 @@
 package com.adminportal.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class CD {
@@ -24,9 +29,9 @@ public class CD {
 	private String category; 
 	private int numberOfSongs; //number of songs
 	private String format;
-	private String reference; //reference
-	private float shippingWeight;
-	private float listPrice;
+	private int reference; //reference
+	private double shippingWeight;
+	private double listPrice;
 
 	private boolean active=true;
 	private int inStockNumber;
@@ -36,6 +41,10 @@ public class CD {
 	
 	@Transient //won't store in database
 	private MultipartFile cdImage;
+	
+	@OneToMany(mappedBy = "cd")
+	@JsonIgnore
+	private List<CdToCartItem> cdToCartItemList;
 
 	public Long getId() {
 		return id;
@@ -114,27 +123,27 @@ public class CD {
 	}
 
 
-	public String getReference() {
+	public int getReference() {
 		return reference;
 	}
 
-	public void setReference(String reference) {
+	public void setReference(int reference) {
 		this.reference = reference;
 	}
 
-	public float getShippingWeight() {
+	public double getShippingWeight() {
 		return shippingWeight;
 	}
 
-	public void setShippingWeight(float shippingWeight) {
+	public void setShippingWeight(double shippingWeight) {
 		this.shippingWeight = shippingWeight;
 	}
 
-	public float getListPrice() {
+	public double getListPrice() {
 		return listPrice;
 	}
 
-	public void setListPrice(float listPrice) {
+	public void setListPrice(double listPrice) {
 		this.listPrice = listPrice;
 	}
 
@@ -170,6 +179,14 @@ public class CD {
 
 	public void setCdImage(MultipartFile cdImage) {
 		this.cdImage = cdImage;
+	}
+
+	public List<CdToCartItem> getCdToCartItemList() {
+		return cdToCartItemList;
+	}
+
+	public void setCdToCartItemList(List<CdToCartItem> cdToCartItemList) {
+		this.cdToCartItemList = cdToCartItemList;
 	}
 
 	

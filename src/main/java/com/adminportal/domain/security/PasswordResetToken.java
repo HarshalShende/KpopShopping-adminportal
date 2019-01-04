@@ -1,5 +1,6 @@
 package com.adminportal.domain.security;
 
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.adminportal.domain.User;
+
+
 
 @Entity
 public class PasswordResetToken {
