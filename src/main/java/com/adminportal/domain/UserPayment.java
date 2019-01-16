@@ -1,5 +1,7 @@
 package com.adminportal.domain;
 
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,33 +11,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-
-
 @Entity
 public class UserPayment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String type;
 	private String cardName;
+	private String cardNumber;
 	private int expiryMonth;
 	private int expiryYear;
 	private int cvc;
 	private String holderName;
 	private boolean defaultPayment;
-	private String cardNumber;
 	
-	public String getCardNumber() {
-		return cardNumber;
-	}
-
-	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
-
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
@@ -63,6 +55,14 @@ public class UserPayment {
 
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 	public int getExpiryMonth() {
@@ -123,4 +123,3 @@ public class UserPayment {
 	
 	
 }
-

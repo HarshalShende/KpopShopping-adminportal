@@ -1,5 +1,7 @@
 package com.adminportal.domain;
 
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +15,15 @@ public class UserBilling {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String userBillingName;
 	private String userBillingStreet1;
 	private String userBillingStreet2;
 	private String userBillingCity;
 	private String userBillingState;
+	private String userBillingCountry;
 	private String userBillingZipcode;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private UserPayment userPayment;
 
 	public Long getId() {
@@ -70,6 +72,14 @@ public class UserBilling {
 
 	public void setUserBillingState(String userBillingState) {
 		this.userBillingState = userBillingState;
+	}
+
+	public String getUserBillingCountry() {
+		return userBillingCountry;
+	}
+
+	public void setUserBillingCountry(String userBillingCountry) {
+		this.userBillingCountry = userBillingCountry;
 	}
 
 	public String getUserBillingZipcode() {

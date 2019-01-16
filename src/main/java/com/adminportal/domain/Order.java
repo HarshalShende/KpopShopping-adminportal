@@ -1,5 +1,7 @@
 package com.adminportal.domain;
 
+
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -24,15 +26,20 @@ public class Order {
 	private Date orderDate;
 	private Date shippingDate;
 	private String shippingMethod;
+	private String orderStatus;
 	private BigDecimal orderTotal;
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL )
 	private List<CartItem> cartItemList;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private ShippingAddress shippingAddress;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
+	private BillingAddress billingAddress;
+	
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	private Payment payment;
 	
 	@ManyToOne
@@ -70,6 +77,14 @@ public class Order {
 		this.shippingMethod = shippingMethod;
 	}
 
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
 	public BigDecimal getOrderTotal() {
 		return orderTotal;
 	}
@@ -86,13 +101,21 @@ public class Order {
 		this.cartItemList = cartItemList;
 	}
 
-
 	public ShippingAddress getShippingAddress() {
 		return shippingAddress;
 	}
 
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
+	}
+
+	
+	public BillingAddress getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(BillingAddress billingAddress) {
+		this.billingAddress = billingAddress;
 	}
 
 	public Payment getPayment() {
@@ -110,4 +133,6 @@ public class Order {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package com.adminportal.domain;
 
+
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class CartItem {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private int qty;
 	private BigDecimal subtotal;
 	
@@ -62,6 +64,8 @@ public class CartItem {
 		this.subtotal = subtotal;
 	}
 
+	
+
 	public CD getCd() {
 		return cd;
 	}
@@ -93,8 +97,6 @@ public class CartItem {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
-	
 	
 	
 }
