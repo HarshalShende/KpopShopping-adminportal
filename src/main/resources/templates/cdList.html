@@ -12,6 +12,7 @@
 			<table id="cdListTable" class="display">
 				<thead>
 					<tr>
+						<th><input th:id="selectAllBooks" type="checkbox" /></th>
 						<th>Title</th>
 						<th>Musician</th>
 						<th>Category</th>
@@ -22,12 +23,21 @@
 				</thead>
 				<tbody>
 					<tr data-th-each="cd:${cdList}">
+						<td>
+							<input hidden="hidden" name="id" th:value="${cd.id}" />
+							<input th:id="'selected'+${cd.id}" class="checkboxCd" type="checkbox" />
+						</td>
 						<td><a th:href="@{/cd/cdInfo(id=${cd.id})}"><span th:text="${cd.title}"></span></a></td>
 						<td th:text="${cd.musician}"></td>
 						<td th:text="${cd.category}"></td>
 						<td th:text="${cd.listPrice}"></td>
 						<td th:text="${cd.active}"></td>
-						<td>delete</td>
+						<td>
+							<input hidden="hidden" name="id" th:value="${cd.id}" />
+							<button th:id="'oneCd-'+${cd.id}" class="btn btn-danger btn xs delete-cd" type="submit" value="delete" >
+								<span class="fa fa-times">Delete</span>
+							</button>
+						</td>
 					</tr>
 				
 				</tbody>
@@ -35,6 +45,7 @@
 			
 			</table>
 		</div>
+		<button th:id="deleteSelected" class="btn btn-danger" >Delete Selected</button>
 	</div>
 
 	<div th:replace="common/header :: body-bottom-scripts" ></div>
