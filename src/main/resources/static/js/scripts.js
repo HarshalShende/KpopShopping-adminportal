@@ -30,22 +30,26 @@ $(document).ready(function() {
 		});
 	});
 	
-	var cdIdList=[];
+
 	
-	$('.checkboxCd').click(function() {
-		var id=$(this).attr('id');
-		if(this.checked){
-			cdIdList.push(id);
-		} else {
-			cdIdList.splice(cdIdList.indexOf(id), 1);
-		}
-	})
+	
 	
 	$('#deleteSelected').click(function() {
+		var idList = $('.checkboxCd');
+		var cdIdList = [];
+		for (var i = 0; i < idList.length; i++) {
+			if (idList[i].checked == true) {
+				cdIdList.push(idList[i]['id'])
+			}
+		}
+		
+		console.log(cdIdList);
+		
 		/*<![CDATA[*/
 	    var path = /*[[@{/}]]*/'removeList';
 	    /*]]>*/
 	    
+		console.log(cdIdList);
 	    bootbox.confirm({
 			message: "Are you sure to remove all selected cds? It can't be undone.",
 			buttons: {
@@ -63,19 +67,28 @@ $(document).ready(function() {
 						url: path,
 						data: JSON.stringify(cdIdList),
 						contentType: "application/json",
-						success: function(res) {console.log(res); location.reload()},
-						error: function(res){console.log(res); location.reload();}
+						success: function(res) 
+							{
+							console.log(res); 
+							location.reload()
+							},
+						error: function(res)
+							{
+							console.log(res); 
+							location.reload();
+							}
 					});
 				}
 			}
 		});
 	});
 	
-	$("selectAllCds").click(function() {
+	$('#selectAllCds').click(function() {
 		if($(this).prop("checked")==true) {
-			$(".checkBox").click();
-		} else if ($(this).prop("checked")==false) {
-			$(".checkBox").click();
+			$(".checkboxCd").prop("checked", true);
+		} 
+		else if ($(this).prop("checked")==false) {
+			$(".checkboxCd").prop("checked", false);
 		}
 	})
 });

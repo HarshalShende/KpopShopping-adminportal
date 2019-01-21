@@ -101,9 +101,19 @@ public class CDController {
 				e.printStackTrace();
 			}
 		}
-		return "redirect:/cd/cdInfo?id="+cd.getId();
+		return "redirect:/cd/cdInfo?id="+cd.getId();	
+	}
+	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(
+			@ModelAttribute("id") String id,
+			Model model
+			) {
+		cdService.removeOne(Long.parseLong(id.substring(6)));//‘oneCd-***'
+		List<CD> cdList = cdService.findAll();
+		model.addAttribute("cdList", cdList);
 		
-		
+		return "redirect:/cd/cdList";
 	}
 	
 }

@@ -10,4 +10,6 @@ public interface CDService {
 	List<CD> findAll();
 	
 	CD findOne(Long id);
+	
+	void removeOne(Long id);
 }

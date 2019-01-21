@@ -29,5 +29,10 @@ public class CDServiceImp implements CDService{
 	public CD findOne(Long id) {
 		return cdRepository.findById(id).orElse(null);
 	}
+	
+	@Override
+	public void removeOne(Long id) {
+		cdRepository.delete(findOne(id));
+	}
 
 }
