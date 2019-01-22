@@ -175,12 +175,12 @@
 						<label class="col-md-2 control-label" for="status">Status</label>
 						<div class="col-md-8">
 							<label>
-								<input value="true" type="radio" name="active" /> 
+								<input value="true" type="radio" name="active" th:checked="${cd.active}"/> 
 									Active 
 							</label> 
 								
 							<label>
-								<input value="false" type="radio" name="active" />
+								<input value="false" type="radio" name="active" th:checked="${!cd.active}"/>
 								Inactive 
 							</label>
 						</div>
