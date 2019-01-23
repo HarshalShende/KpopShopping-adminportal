@@ -2,6 +2,7 @@ package com.adminportal.domain;
 
 
 
+import java.io.File;
 import java.util.List;
 
 import javax.persistence.Column;

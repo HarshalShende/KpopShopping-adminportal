@@ -1,11 +1,8 @@
 package com.adminportal.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.adminportal.domain.CD;
+import com.adminportal.domain.CloudinaryConfig;
 import com.adminportal.service.CDService;
+import com.cloudinary.utils.ObjectUtils;
+
+
+
 
 @Controller
 @RequestMapping("/cd")
@@ -27,6 +29,9 @@ public class CDController {
 
 	@Autowired
 	private CDService cdService;
+	
+	@Autowired
+    CloudinaryConfig cloudc;
 	
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
@@ -39,22 +44,25 @@ public class CDController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String addCDPost(
 			@ModelAttribute("cd") CD cd, HttpServletRequest request		
-			) {
+			) throws IOException {
 		cdService.save(cd);
 		
 		MultipartFile cdImage = cd.getCdImage();
+
 		
-		try {
-			byte[] bytes = cdImage.getBytes();
-			String name = cd.getId()+".png";
-			BufferedOutputStream stream = new BufferedOutputStream(
-					new FileOutputStream(new File("src/main/resources/static/image/cd/"+name)));
-			stream.write(bytes);
-			stream.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		if (cdImage.isEmpty()){
+			return "redirect:cdList";
+        }
+        try {
+            Map uploadResult =  cloudc.upload(cdImage.getBytes(), 
+	    	ObjectUtils.asMap("resourcetype", "auto", "folder", "kpop/", 
+	    		    "public_id", cd.getId()+""));
+            
+        } catch (IOException e){
+            e.printStackTrace();
+            return "addCD";
+        }
+
 		return "redirect:cdList";
 	}
 	
@@ -89,18 +97,14 @@ public class CDController {
 		
 		if (!cdImage.isEmpty()) {
 			try {
-				byte[] bytes = cdImage.getBytes();
-				String name = cd.getId()+".png";
-				
-				Files.delete(Paths.get("src/main/resources/static/image/cd/"+name));
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(new File("src/main/resources/static/image/cd/"+name)));
-				stream.write(bytes);
-				stream.close();
+				 Map uploadResult =  cloudc.upload(cdImage.getBytes(), 
+					    	ObjectUtils.asMap("resourcetype", "auto", "folder", "kpop/", 
+					    		    "public_id", cd.getId()+""));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
 		return "redirect:/cd/cdInfo?id="+cd.getId();	
 	}
 	
